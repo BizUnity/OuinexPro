@@ -1,0 +1,82 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:OuinexPro.Desktop.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="OuinexPro.Desktop.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="OuinexPro.Desktop">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+	<Grid RowDefinitions="Auto,*">
+
+		<Menu Grid.Row="0">
+			<MenuItem Header="_File">
+				<MenuItem x:Name="FileOpenLayout" Header="_Open layout..." />
+				<Separator/>
+				<MenuItem x:Name="FileSaveLayout" Header="_Save layout..."  />
+				<Separator/>
+				<MenuItem x:Name="FileCloseLayout" Header="_Close layout"  />
+			</MenuItem>
+			<MenuItem Header="Charts">
+				<MenuItem Header="Add a new chart"/>
+				<MenuItem Header="Open a new ChartScope"/>
+				<MenuItem Header="Open an existing ChartScope">
+					<MenuItem Header="Test"/>
+				</MenuItem>
+			</MenuItem>
+			<MenuItem Header="Tools"></MenuItem>
+			<MenuItem Header="Applications"></MenuItem>
+		</Menu>
+		<Image Source="/Assets/favicon.png"
+					   Grid.Row="1"
+					   VerticalAlignment="Center"
+					   Height="100"
+					   HorizontalAlignment="Center"/>
+		<DockControl x:Name="Dock" Grid.Row="1" InitializeLayout="True" InitializeFactory="True">
+			<DockControl.Factory>
+				<Factory />
+			</DockControl.Factory>
+
+			<RootDock x:Name="Root" Id="Root" IsCollapsable="True" DefaultDockable="{Binding #MainLayout}">
+
+				<!-- Windows -->
+
+				<RootDock.Windows>
+				</RootDock.Windows>
+
+				<ProportionalDock x:Name="MainLayout" Id="MainLayout" Orientation="Horizontal">
+					<DocumentDock x:Name="DocumentsPane" Id="DocumentsPane" CanCreateDocument="True" >
+						<DocumentDock.DocumentTemplate>
+							<DocumentTemplate>
+								<StackPanel x:DataType="Document">
+									<TextBlock Text="Title"/>
+									<TextBox Text="{Binding Title}"/>
+									<TextBlock Text="Context"/>
+									<TextBox Text="{Binding Context}"/>
+								</StackPanel>
+							</DocumentTemplate>
+						</DocumentDock.DocumentTemplate>
+						<!--
+							<Document x:Name="Document1" Id="Document1" Title="Program.cs" x:DataType="Document">
+							<TextBlock Text="{Binding Title}"/>
+						</Document>
+						<Document x:Name="Document2" Id="Document2" Title="App.axaml" x:DataType="Document">
+							<TextBlock Text="{Binding Title}"/>
+						</Document>
+						-->
+					
+					</DocumentDock>
+				</ProportionalDock>
+			</RootDock>
+		</DockControl>
+		
+		
+	</Grid>
+</Window>
