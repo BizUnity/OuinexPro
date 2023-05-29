@@ -1,3 +1,4 @@
+
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:OuinexPro.Desktop.ViewModels"
@@ -6,7 +7,9 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="OuinexPro.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
+		xmlns:views="using:OuinexPro.SharedViews.Views"
         Icon="/Assets/avalonia-logo.ico"
+		xmlns:local="using:OuinexPro.Desktop.Views"
         Title="OuinexPro.Desktop">
 
     <Design.DataContext>
@@ -25,7 +28,8 @@
 				<MenuItem x:Name="FileCloseLayout" Header="_Close layout"  />
 			</MenuItem>
 			<MenuItem Header="Charts">
-				<MenuItem Header="Add a new chart"/>
+				<MenuItem Header="Add a new chart"
+						  Command="{Binding OpenChartCommand}"/>
 				<MenuItem Header="Open a new ChartScope"/>
 				<MenuItem Header="Open an existing ChartScope">
 					<MenuItem Header="Test"/>
@@ -39,44 +43,47 @@
 					   VerticalAlignment="Center"
 					   Height="100"
 					   HorizontalAlignment="Center"/>
-		<DockControl x:Name="Dock" Grid.Row="1" InitializeLayout="True" InitializeFactory="True">
-			<DockControl.Factory>
-				<Factory />
-			</DockControl.Factory>
+	 <DockControl x:Name="Dock" Grid.Row="1" InitializeLayout="True" InitializeFactory="True">
+      <DockControl.Factory>
+        <Factory />
+      </DockControl.Factory>
 
-			<RootDock x:Name="Root" Id="Root" IsCollapsable="True" DefaultDockable="{Binding #MainLayout}">
+      <RootDock x:Name="Root" Id="Root" IsCollapsable="False" DefaultDockable="{Binding #MainLayout}">
 
-				<!-- Windows -->
 
-				<RootDock.Windows>
-				</RootDock.Windows>
+        <ProportionalDock x:Name="MainLayout" Id="MainLayout" Orientation="Horizontal">
 
-				<ProportionalDock x:Name="MainLayout" Id="MainLayout" Orientation="Horizontal">
-					<DocumentDock x:Name="DocumentsPane" Id="DocumentsPane" CanCreateDocument="True" >
-						<DocumentDock.DocumentTemplate>
-							<DocumentTemplate>
-								<StackPanel x:DataType="Document">
-									<TextBlock Text="Title"/>
-									<TextBox Text="{Binding Title}"/>
-									<TextBlock Text="Context"/>
-									<TextBox Text="{Binding Context}"/>
-								</StackPanel>
-							</DocumentTemplate>
-						</DocumentDock.DocumentTemplate>
-						<!--
-							<Document x:Name="Document1" Id="Document1" Title="Program.cs" x:DataType="Document">
-							<TextBlock Text="{Binding Title}"/>
-						</Document>
-						<Document x:Name="Document2" Id="Document2" Title="App.axaml" x:DataType="Document">
-							<TextBlock Text="{Binding Title}"/>
-						</Document>
-						-->
-					
-					</DocumentDock>
-				</ProportionalDock>
-			</RootDock>
-		</DockControl>
-		
-		
+
+
+          <ProportionalDock x:Name="TopPane" Id="TopPane" Orientation="Vertical">
+
+            <!-- Right Pane -->
+
+            <ProportionalDock x:Name="RightPane" Id="RightPane" Orientation="Horizontal">
+
+              <!-- Documents Pane -->
+
+           <ToolDock x:Name="BottomPane" Id="BottomPane" Proportion="0.3" Alignment="Bottom" ActiveDockable="Output">
+              <Tool x:Name="ErrorList" Id="ErrorList" Title="Error List" x:DataType="Tool">
+                <TextBlock Text="{Binding Title}"/>
+              </Tool>
+              <Tool x:Name="Output" Id="Output" Title="Output" x:DataType="Tool">
+                <TextBlock Text="{Binding Title}"/>
+              </Tool>
+              <Tool x:Name="Ouhtput" Id="Output" Title="Output" x:DataType="Tool">
+                <Button Content="{Binding Title}"/>
+              </Tool>
+            </ToolDock>
+
+
+            </ProportionalDock>
+
+           
+          </ProportionalDock>
+
+        </ProportionalDock>
+      </RootDock>
+
+    </DockControl>
 	</Grid>
 </Window>

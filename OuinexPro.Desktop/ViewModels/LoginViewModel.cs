@@ -18,6 +18,9 @@ namespace OuinexPro.Desktop.ViewModels
             });
 
             var wnd = new MainWindow();
+            var model = new MainWindowViewModel();
+            model.Dock = wnd.BottomPane;
+            wnd.DataContext = model;
             wnd.Show();
         }
 

@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OuinexPro.Desktop.Views.NewDockTemplate">
+	<StackPanel Orientation="Horizontal"
+				Margin="20"
+				VerticalAlignment="Top">
+		<Button Name="chart"
+				Width="150"
+				Height="150"
+				Margin="5"
+				Padding="10">
+			<StackPanel>
+				<Label HorizontalAlignment="Center">New chart</Label>
+				<Path Data="M122.499996185303,134.5L125.5,134.5 125.5,149.499998807907 138.5,149.499998807907 138.5,207.5 125.5,207.5 125.5,231.5 122.499996185303,231.5 122.499996185303,207.5 109.5,207.5 109.5,149.499998807907 122.499996185303,149.499998807907z M13.5,129.500003814697L16.5,129.500003814697 16.5,163.499995231628 29.5,163.499995231628 29.5,292.5 16.5,292.5 16.5,326.5 13.5,326.5 13.5,292.5 0.5,292.5 0.5,163.499995231628 13.5,163.499995231628z M85.5,87.5L88.5,87.5 88.5,104.5 102.5,104.5 102.5,207.5 89.5,207.5 89.5,257.5 86.5,257.5 86.5,207.5 73.5,207.5 73.5,104.5 85.5,104.5z M50.5,79.5L53.5,79.5 53.5,104.5 66.5,104.5 66.5,163.5 53.5,163.5 53.5,197.5 50.5,197.5 50.5,163.5 37.5,163.5 37.5,104.5 50.5,104.5z M159.500001490116,0.5L162.500000476837,0.5 162.500000476837,22.5 175.500003814697,22.5 175.500003814697,151.499999672174 162.500005245209,151.499999672174 162.500005245209,166.499999046326 159.500001490116,166.499999046326 159.500001490116,151.499999672174 146.499998092651,151.499999672174 146.499998092651,22.5 159.500001490116,22.5z"
+		              Fill="Red"
+					  HorizontalAlignment="Center"
+					  Height="100"
+					  Stretch="Uniform"/>
+			</StackPanel>
+		</Button>
+		<Button Name="btn"
+				Width="150"
+				Height="150"
+				Margin="5"
+				Padding="10">
+			<StackPanel>
+				<Label HorizontalAlignment="Center">Depth Of Market</Label>
+				<Path Fill="Red"
+					  HorizontalAlignment="Center"
+					  Stretch="Uniform"
+					  Data="M0.5,91.5L61.5,91.5 61.5,98.5 0.5,98.5z M0.5,80.5L61.5,80.5 61.5,87.5 0.5,87.5z M0.5,69.5L61.5,69.5 61.5,76.5 0.5,76.5z M0.5,58.5000009536743L61.5,58.5000009536743 61.5,65.5 0.5,65.5z M0.5,46.499999165535L124.5,46.499999165535 124.5,53.5 0.5,53.5z M63.5,33.5L124.5,33.5 124.5,40.4999995231628 63.5,40.4999995231628z M63.5,22.5L124.5,22.5 124.5,29.5 63.5,29.5z M63.5,11.5L124.5,11.5 124.5,18.5 63.5,18.5z M63.5,0.5L124.5,0.5 124.5,7.5 63.5,7.5z" />
+			</StackPanel>
+			</Button>
+	</StackPanel>
+</UserControl>

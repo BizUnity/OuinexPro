@@ -24,11 +24,15 @@ public class Document : DockableBase, IDocument, IDocumentContent, ITemplate<Con
     public static readonly StyledProperty<object?> ContentProperty =
         AvaloniaProperty.Register<Document, object?>(nameof(Content));
 
+    public static readonly StyledProperty<object?> CustomContentProperty =
+       AvaloniaProperty.Register<Document, object?>(nameof(CustomContent));
+
     /// <summary>
     /// Initializes new instance of the <see cref="Document"/> class.
     /// </summary>
     public Document()
     {
+        Content = new Button();
     }
 
     /// <summary>
@@ -43,6 +47,12 @@ public class Document : DockableBase, IDocument, IDocumentContent, ITemplate<Con
     {
         get => GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
+    }
+
+    public object? CustomContent
+    {
+        get => GetValue(CustomContentProperty);
+        set => SetValue(CustomContentProperty, value);
     }
 
     /// <summary>
@@ -97,7 +107,7 @@ public class Document : DockableBase, IDocument, IDocumentContent, ITemplate<Con
     /// <returns></returns>
     public Control Build(object? data, Control? existing)
     {
-        return existing ?? TemplateContent.Load(Content)?.Control!;
+        return existing ?? (Content as UserControl);//TemplateContent.Load(Content)?.Control!;
     }
 
     private static ControlTemplateResult Load(object templateContent)

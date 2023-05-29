@@ -99,7 +99,7 @@ public class Tool : DockableBase, ITool, IDocument, IToolContent, ITemplate<Cont
     /// <returns></returns>
     public Control Build(object? data, Control? existing)
     {
-        return existing ?? TemplateContent.Load(Content)?.Control!;
+        return existing ?? (Content as UserControl);//TemplateContent.Load(Content)?.Control!;
     }
 
     private static ControlTemplateResult Load(object templateContent)

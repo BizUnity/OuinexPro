@@ -21,4 +21,9 @@
     <UpToDateCheckInput Remove="Views\SimpleMarketWatch.axaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\StockPlot\StockPlot.Charts\StockPlot.Charts.csproj" />
+    <ProjectReference Include="..\..\StockPlot\StockPlot.Indicators\StockPlot.Indicators.csproj" />
+  </ItemGroup>
+
 </Project>
