@@ -1,0 +1,98 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:viewModels="clr-namespace:OuinexPro.ViewModels;assembly=OuinexPro.ViewModels"
+             xmlns:models="clr-namespace:OuinexPro.Bases.Interfaces;assembly=OuinexPro.Bases"
+             x:DataType="viewModels:MarketWatchViewModel"
+             x:Class="OuinexPro.SharedViews.Views.GridMarketWatch">
+    <UserControl.DataContext>
+        <viewModels:MarketWatchViewModel/>
+    </UserControl.DataContext>
+    <Grid RowDefinitions="Auto,*">
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="3"
+                    VerticalAlignment="Center"
+                    Content="Lists">
+                <Button.Flyout>
+                    <Flyout Placement="BottomEdgeAlignedLeft">
+                       <Grid RowDefinitions="Auto,Auto,Auto"
+                             ColumnDefinitions="Auto,*">
+                           <TextBlock Text="Select a list"
+                                      VerticalAlignment="Center"
+                                      Margin="3"/>
+                           <ComboBox Grid.Column="1"
+                                     Margin="3"/>
+                           <TextBlock Text="OR"
+                                      Grid.Row="1"
+                                      Grid.ColumnSpan="2"
+                                      HorizontalAlignment="Center"
+                                      Margin="3"></TextBlock>
+                           <TextBlock Text="Create a list"
+                                      Grid.Row="2"
+                                      VerticalAlignment="Center"
+                                      Margin="3"/>
+                           <TextBox Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="3"></TextBox>
+                       </Grid> 
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button Content="Settings"
+                    Margin="3">
+                <Button.Flyout>
+                    <Flyout Placement="BottomEdgeAlignedLeft">
+                        <StackPanel>
+                            <CheckBox Content="Bid"
+                                      Name="BidCheckBox"
+                                      Margin="3"/>
+                            <CheckBox Content="Ask"
+                                      Name="AskCheckBox"
+                                      Margin="3"/>
+                            <CheckBox Content="High"
+                                      Name="HighCheckBox"
+                                      Margin="3"/>
+                            <CheckBox Content="Low"
+                                      Name="LowCheckBox"
+                                      Margin="3"/>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <AutoCompleteBox ItemsSource="{Binding Symbols}"
+                             Watermark="Search a ticker..."
+                             Name="searchBox"
+                             DropDownClosed="SearchBox_OnDropDownClosed"
+                             Margin="3"
+                             ValueMemberBinding="{ReflectionBinding NormalizedName}">
+                <AutoCompleteBox.ItemTemplate>
+                    <DataTemplate x:DataType="models:ISymbol">
+                        <TextBlock Text="{Binding NormalizedName}"/>
+                    </DataTemplate>
+                </AutoCompleteBox.ItemTemplate>
+            </AutoCompleteBox>
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False"
+                  Grid.Row="1"
+                  ItemsSource="{Binding Tickers}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Symbol"
+                                    Binding="{Binding Ticker.Symbol.NormalizedName}"/>
+                <DataGridTextColumn Header="Bid"
+                                    IsVisible="{Binding ElementName=BidCheckBox, Path=IsChecked}"
+                                    Binding="{Binding Bid}"/>
+                <DataGridTextColumn Header="Ask"
+                                    IsVisible="{Binding ElementName=AskCheckBox, Path=IsChecked}"
+                                    Binding="{Binding Ask}"/>
+                <DataGridTextColumn Header="High"
+                                    IsVisible="{Binding ElementName=HighCheckBox, Path=IsChecked}"
+                                    Binding="{Binding Ticker.High}"/>
+                <DataGridTextColumn Header="Low"
+                                    IsVisible="{Binding ElementName=LowCheckBox, Path=IsChecked}"
+                                    Binding="{Binding Ticker.Low}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Dock.Avalonia/Controls/DocumentContentControl.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="Dock.Avalonia/Controls/DocumentControl.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.Desktop/App.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.Desktop/Views/LoginWindow.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.Desktop/Views/MainWindow.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.Desktop/Views/NewDockTemplate.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.SharedViews/MarketWatchGrid.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.SharedViews/Views/ChartView.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.SharedViews/Views/GridMarketWatch.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.SharedViews/Views/SimpleMarketWatch.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+        <entry key="OuinexPro.SharedViews/Views/Tape.axaml" value="OuinexPro.Desktop/OuinexPro.Desktop.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

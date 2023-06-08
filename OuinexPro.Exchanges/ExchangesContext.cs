@@ -9,5 +9,7 @@ namespace OuinexPro.Exchanges
         {
             { "Binance", new PublicBinance() }
         };
+
+        public static List<ISymbol> AllSymbols { get; } = new();
     }
 }

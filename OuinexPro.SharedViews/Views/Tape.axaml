@@ -1,0 +1,65 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Background="#02FF577C"
+             xmlns:viewModels="clr-namespace:OuinexPro.ViewModels;assembly=OuinexPro.ViewModels"
+             x:DataType="viewModels:TapeViewModel"
+             x:Class="OuinexPro.SharedViews.Views.Tape">
+    <UserControl.DataContext>
+        <viewModels:TapeViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <ItemsControl Name="listBox"
+                      HorizontalAlignment="Left"
+                      Background="Transparent"
+                      ItemsSource="{Binding Items}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="3"
+                            Padding="3"
+                            Margin="3,0"
+                            BorderThickness="0.5"
+                            BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter Content="{Binding}"/>
+                            <Separator Height="10"
+                                       Width="1"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl Name="listBox2"
+                      HorizontalAlignment="Left"
+                      Background="Transparent"
+                      ItemsSource="{Binding Items}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="3"
+                            Padding="3"
+                            Margin="3,0"
+                            BorderThickness="0.5"
+                            BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter Content="{Binding}"/>
+                            <Separator Height="10"
+                                       Width="1"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+   </Grid>
+</UserControl>

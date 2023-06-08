@@ -7,10 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.0.0-preview6" />
-    <PackageReference Include="Avalonia.Desktop" Version="11.0.0-preview6" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="11.0.0-preview6" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview6" />
+    <PackageReference Include="Avalonia" Version="11.0.0-preview8" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.0-preview8" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.0-preview8" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.0.0-preview8" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview8" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\StockPlot\StockPlot.Charts\StockPlot.Charts.csproj" />
     <ProjectReference Include="..\..\StockPlot\StockPlot.Indicators\StockPlot.Indicators.csproj" />
+    <ProjectReference Include="..\OuinexPro.ViewModels\OuinexPro.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

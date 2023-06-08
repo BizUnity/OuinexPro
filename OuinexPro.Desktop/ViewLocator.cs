@@ -1,7 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using OuinexPro.Desktop.ViewModels;
+using Dock.Model.Mvvm.Controls;
 using System;
+
 
 namespace OuinexPro.Desktop
 {
@@ -9,20 +10,22 @@ namespace OuinexPro.Desktop
     {
         public Control Build(object data)
         {
-            var name = data.GetType().FullName!.Replace("ViewModel", "View");
-            var type = Type.GetType(name);
+            var name = data?.GetType().FullName?.Replace("ViewModel", "View");
+            var type = name is null ? null : Type.GetType(name);
 
             if (type != null)
             {
                 return (Control)Activator.CreateInstance(type)!;
             }
-
-            return new TextBlock { Text = "Not Found: " + name };
+            else
+            {
+                return new TextBlock { Text = "Not Found: " + name };
+            }
         }
 
         public bool Match(object data)
         {
-            return data is ViewModelBase;
+            return data is Document;
         }
     }
 }

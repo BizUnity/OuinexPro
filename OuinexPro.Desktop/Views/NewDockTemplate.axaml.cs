@@ -2,10 +2,11 @@ using Avalonia.Controls;
 using OuinexPro.SharedViews.ViewModels;
 using OuinexPro.SharedViews.Views;
 using System.Drawing;
+using OuinexPro.Bases.Interfaces;
 
 namespace OuinexPro.Desktop.Views
 {
-    public partial class NewDockTemplate : UserControl
+    public partial class NewDockTemplate : UserControl, IViewComponent
     {
         public NewDockTemplate()
         {
@@ -30,5 +31,7 @@ namespace OuinexPro.Desktop.Views
                 DataContext = new ChartViewModel()
             };
         }
+
+        public string DisplayName { get; } = "Add a new document";
     }
 }

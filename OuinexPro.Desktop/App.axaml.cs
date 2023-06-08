@@ -17,9 +17,16 @@ namespace OuinexPro.Desktop
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new LoginWindow()
+                var dataContext = new LoginViewModel();
+                var wnd = new LoginWindow()
                 {
-                    DataContext = new LoginViewModel(),
+                    DataContext = dataContext
+                };
+                desktop.MainWindow = wnd;
+
+                dataContext.OnLogged += (o,e) =>
+                {
+                    wnd.Close();
                 };
             }
 

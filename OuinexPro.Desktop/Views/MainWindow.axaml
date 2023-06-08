@@ -11,79 +11,59 @@
         Icon="/Assets/avalonia-logo.ico"
 		xmlns:local="using:OuinexPro.Desktop.Views"
         Title="OuinexPro.Desktop">
-
-    <Design.DataContext>
+	<Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-	<Grid RowDefinitions="Auto,*">
-
+	<Grid RowDefinitions="Auto, Auto,*">
 		<Menu Grid.Row="0">
 			<MenuItem Header="_File">
-				<MenuItem x:Name="FileOpenLayout" Header="_Open layout..." />
+				<MenuItem x:Name="FileOpenLayout" 
+				          Header="_Open layout..." />
 				<Separator/>
-				<MenuItem x:Name="FileSaveLayout" Header="_Save layout..."  />
+				<MenuItem x:Name="FileSaveLayout" 
+				          Header="_Save layout..."  />
 				<Separator/>
-				<MenuItem x:Name="FileCloseLayout" Header="_Close layout"  />
+				<MenuItem x:Name="FileCloseLayout" 
+				          Header="_Close layout"  />
 			</MenuItem>
 			<MenuItem Header="Charts">
-				<MenuItem Header="Add a new chart"
+				<MenuItem Header="Add a new chart" 
 						  Command="{Binding OpenChartCommand}"/>
 				<MenuItem Header="Open a new ChartScope"/>
 				<MenuItem Header="Open an existing ChartScope">
 					<MenuItem Header="Test"/>
 				</MenuItem>
 			</MenuItem>
-			<MenuItem Header="Tools"></MenuItem>
-			<MenuItem Header="Applications"></MenuItem>
-		</Menu>
-		<Image Source="/Assets/favicon.png"
-					   Grid.Row="1"
-					   VerticalAlignment="Center"
-					   Height="100"
-					   HorizontalAlignment="Center"/>
-	 <DockControl x:Name="Dock" Grid.Row="1" InitializeLayout="True" InitializeFactory="True">
-      <DockControl.Factory>
+			<MenuItem Header="Markets">
+				<MenuItem Header="Markets (Grid view)"
+				          Command="{Binding OpenGridMarketWatch}"/>
+				<MenuItem Header="Markets (Advanced view)"
+				          Command="{Binding OpenGridMarketWatch}"/>
+			</MenuItem>
+			<MenuItem Header="Trading">
+				<MenuItem Header="Wallets"></MenuItem>
+			</MenuItem>
+		</Menu> 
+		<views:Tape Grid.Row="1"
+		            IsVisible="True"/>
+    <DockControl Grid.Row="2"
+                 Margin="3"
+                 Name="Dock"
+                 InitializeLayout="True"
+                 InitializeFactory="True">
+	    <DockControl.Factory>
         <Factory />
       </DockControl.Factory>
-
-      <RootDock x:Name="Root" Id="Root" IsCollapsable="False" DefaultDockable="{Binding #MainLayout}">
-
-
-        <ProportionalDock x:Name="MainLayout" Id="MainLayout" Orientation="Horizontal">
-
-
-
-          <ProportionalDock x:Name="TopPane" Id="TopPane" Orientation="Vertical">
-
-            <!-- Right Pane -->
-
-            <ProportionalDock x:Name="RightPane" Id="RightPane" Orientation="Horizontal">
-
-              <!-- Documents Pane -->
-
-           <ToolDock x:Name="BottomPane" Id="BottomPane" Proportion="0.3" Alignment="Bottom" ActiveDockable="Output">
-              <Tool x:Name="ErrorList" Id="ErrorList" Title="Error List" x:DataType="Tool">
-                <TextBlock Text="{Binding Title}"/>
-              </Tool>
-              <Tool x:Name="Output" Id="Output" Title="Output" x:DataType="Tool">
-                <TextBlock Text="{Binding Title}"/>
-              </Tool>
-              <Tool x:Name="Ouhtput" Id="Output" Title="Output" x:DataType="Tool">
-                <Button Content="{Binding Title}"/>
-              </Tool>
-            </ToolDock>
-
-
-            </ProportionalDock>
-
-           
-          </ProportionalDock>
-
-        </ProportionalDock>
+	    <RootDock Name="RootDock"
+	              Id="RootDock"
+	              IsCollapsable="False">
+        <DocumentDock Name="MainDock"
+                      Id="MainDock"
+                      IsCollapsable="False">
+        </DocumentDock>
       </RootDock>
-
     </DockControl>
 	</Grid>
 </Window>

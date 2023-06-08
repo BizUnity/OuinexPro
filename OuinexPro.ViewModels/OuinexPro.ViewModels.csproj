@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview6" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OuinexPro.Bases\OuinexPro.Bases.csproj" />
+    <ProjectReference Include="..\OuinexPro.Exchanges\OuinexPro.Exchanges.csproj" />
   </ItemGroup>
 
 </Project>

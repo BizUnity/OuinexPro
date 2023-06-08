@@ -58,6 +58,7 @@ namespace OuinexPro.Exchanges.PublicExchanges
                     ticker.RaiseTick();
                 });
 
+                ticker.Symbol = symbol;
                 return new Request<ITicker>(ticker, true);
             }
             catch(Exception ex)
@@ -103,10 +104,11 @@ namespace OuinexPro.Exchanges.PublicExchanges
                                 // symbol.IsMarginTradingAllowed = element.GetProperty("isMarginTradingAllowed").GetBoolean();
 
                                 _symbols.Add(symbol);
-                                _symbols.Sort();
                             }
                         }
-
+// add the new symbols to the global list
+                        ExchangesContext.AllSymbols.AddRange(_symbols);
+                        
                         return new Request<bool>(true, true);
                     }
                     else
